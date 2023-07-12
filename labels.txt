@@ -1,0 +1,2 @@
+0 Smile
+1 No Smile
