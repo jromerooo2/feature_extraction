@@ -34,7 +34,7 @@ for file in all_img:
         column_landmarks.append(array[1])
     pred = pd.DataFrame(pred)
     pred["Class"] = column_smile
-    pred["3D landmark"] = column_landmarks
+    pred["3D_landmark"] = column_landmarks
     pred.to_pickle('./output/video_{}.pkl'.format(file))
     pred.to_csv('./output/video_{}.csv'.format(file))
 
