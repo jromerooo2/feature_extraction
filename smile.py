@@ -51,4 +51,4 @@ def detect_smile(frame=None,i=0):
     print("Confidence Score:", confidence_score)
 
 # detect_smile()
-loop_video('./testing/diego.mp4')
+loop_video("./samples/diego.mp4")
