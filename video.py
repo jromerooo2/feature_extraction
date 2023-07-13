@@ -4,6 +4,8 @@ from feat.plotting import imshow
 import os
 from smile import loop_video
 import pandas as pd
+
+
 #initialize the detector
 detector = Detector(
     face_model="retinaface",
@@ -21,14 +23,18 @@ for file in all_img:
     face_video = os.path.join('./samples/' + file)
     #returns a dataframe that will be used to save later
     pred = detector.detect_video(face_video)
+
     #returns an array of arrays -> [[class_name (smile or no smile),confidence score ]]
     #idea is to save the new data as new columns in the original dataframe
     smile_frame = loop_video(face_video)
-    column = []
+    column_smile = []
+    column_landmarks = []
     for array in smile_frame:
-        column.append(array[0])
+        column_smile.append(array[0])
+        column_landmarks.append(array[1])
     pred = pd.DataFrame(pred)
-    pred["Class"] = column
+    pred["Class"] = column_smile
+    pred["3D landmark"] = column_landmarks
     pred.to_pickle('./output/video_{}.pkl'.format(file))
     pred.to_csv('./output/video_{}.csv'.format(file))
 
