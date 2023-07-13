@@ -29,5 +29,7 @@ for file in all_img:
         column.append(array[0])
     pred = pd.DataFrame(pred)
     pred["Class"] = column
+    pred.to_pickle('./output/video_{}.pkl'.format(file))
+    pred.to_csv('./output/video_{}.csv'.format(file))
 
     # print(pred)

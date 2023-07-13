@@ -14,7 +14,7 @@ def loop_video(vid_path):
     while True:
         ret,frame = v.read()
         if ret == False:
-            print("im bout to break")
+            print("finishing the smile recognition")
             break
         i+=1
         c,cs = detect_smile(frame,i)
